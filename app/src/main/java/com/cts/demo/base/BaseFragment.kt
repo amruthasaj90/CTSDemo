@@ -1,4 +1,4 @@
-package com.digicom.onesqft.base
+package  com.cts.demo.base
 
 import android.content.Intent
 import android.os.Bundle

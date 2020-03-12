@@ -1,6 +1,7 @@
 package com.techversant.evara.common
 
-import com.techversant.evara.model.Contact
+import com.cts.demo.model.Contact
+
 
 fun getMyCategoryLists(): ArrayList<Contact> {
     var list = ArrayList<Contact>()

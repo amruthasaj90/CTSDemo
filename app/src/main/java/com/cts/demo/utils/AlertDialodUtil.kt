@@ -50,4 +50,28 @@ object AlertDialodUtil {
         }
     }
 
+    fun showAlertMessage(
+        context: Context,
+        message: String,
+        listener: AlertDialodUtil.DialogListener? = null
+    ) {
+        if (alertDialog == null || !alertDialog!!.isShowing) {
+            alertDialog = AlertDialog.Builder(context)
+                .setCancelable(false)
+                .setMessage(message)
+                .setPositiveButton("") { dialog, _ ->
+                    dialog?.cancel()
+                    if (listener != null) {
+                        listener.onPositiveClicked()
+                    }
+                }
+                .create()
+            alertDialog?.setOnShowListener {
+
+            }
+
+            alertDialog?.show()
+        }
+    }
+
 }

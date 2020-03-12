@@ -1,4 +1,4 @@
-package com.techversant.evara.viewholder
+package com.cts.demo.viewholder
 
 import android.view.View
 import androidx.databinding.ViewDataBinding

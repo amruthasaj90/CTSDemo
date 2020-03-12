@@ -35,20 +35,4 @@ class CodeSnippetExtension private constructor() {
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting
     }
 
-    fun getVersionCode(context: Context): Long {
-        var versionCode = 0L
-        try {
-            val pInfo: PackageInfo =
-                context.getPackageManager().getPackageInfo(context.packageName, 0)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                versionCode = pInfo.longVersionCode
-            } else {
-                versionCode = pInfo.versionCode.toLong()
-            }
-        } catch (e: PackageManager.NameNotFoundException) {
-            e.printStackTrace()
-        }
-        return versionCode
-    }
-
 }

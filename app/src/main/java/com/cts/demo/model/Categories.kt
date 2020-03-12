@@ -1,4 +1,4 @@
-package com.techversant.evara.model
+package com.cts.demo.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
