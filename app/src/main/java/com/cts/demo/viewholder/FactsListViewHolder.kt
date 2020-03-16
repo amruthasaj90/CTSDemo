@@ -1,6 +1,8 @@
 package com.cts.demo.viewholder
 
 import android.content.Context
+import android.opengl.Visibility
+import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
@@ -21,7 +23,11 @@ class FactsListViewHolder(
         viewDataBinding.factsData = data
         viewDataBinding.listener = listener
 
-        if(!data.imageHref.isNullOrEmpty()) {
+        if (data.description.isNullOrEmpty()) {
+            viewDataBinding.tvDescription.visibility = View.GONE
+        }
+        if (!data.imageHref.isNullOrEmpty()) {
+            viewDataBinding.ivFacts.visibility = View.VISIBLE
             val requestOptions = RequestOptions()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .override(300, 300)
@@ -29,6 +35,8 @@ class FactsListViewHolder(
                 .load(data.imageHref)
                 .thumbnail(0.5f).apply(requestOptions)
                 .into(viewDataBinding.ivFacts)
+        } else {
+            viewDataBinding.ivFacts.visibility = View.GONE
         }
     }
 

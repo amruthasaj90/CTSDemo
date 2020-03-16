@@ -15,7 +15,6 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.facts.FactsActivity"
-            android:label="@string/title_activity_facts"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

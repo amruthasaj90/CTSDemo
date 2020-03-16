@@ -1,13 +1,8 @@
 package com.cts.demo.ui.facts
 
-import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.util.isEmpty
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cts.demo.R
 import com.cts.demo.adapter.FactsListAdapter
@@ -17,7 +12,6 @@ import com.cts.demo.listener.BaseRecyclerAdapterListener
 import com.cts.demo.model.response.Facts
 import com.cts.demo.model.response.FactsResponse
 import com.google.gson.Gson
-
 import kotlinx.android.synthetic.main.activity_facts.*
 
 class FactsActivity : BaseActivity<FactsViewModel, ActivityFactsBinding>() {
@@ -39,14 +33,24 @@ class FactsActivity : BaseActivity<FactsViewModel, ActivityFactsBinding>() {
         viewBinding.rvFactsList.layoutManager = layoutManager
         viewBinding.factsAdapter = adapter
 
+        viewBinding.srFacts.setOnRefreshListener {
+            viewModel.getFactsList()
+        }
         viewModel.factsList.observe(this, Observer { result ->
             if (result != null) {
+                viewBinding.srFacts.isRefreshing = false
                 val factsListResponse =
                     viewModel.handleReponse(this, result) as FactsResponse?
-                Log.e("factsListResponse",Gson().toJson(factsListResponse))
+                Log.e("factsListResponse", Gson().toJson(factsListResponse))
                 if (factsListResponse != null && !factsListResponse.rows.isNullOrEmpty()) {
+                    toolbar.title = factsListResponse.title
                     factsList.clear()
-                    factsList.addAll(factsListResponse.rows!!)
+                    for (fact in factsListResponse.rows!!) {
+                        if (fact.description.isNullOrEmpty() && fact.title.isNullOrEmpty() && fact.imageHref.isNullOrEmpty()) {
+                            continue
+                        }
+                        factsList.add(fact)
+                    }
                     adapter.notifyDataSetChanged()
 
                 } else {
