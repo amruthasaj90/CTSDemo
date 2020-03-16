@@ -1,17 +1,17 @@
-package com.techversant.evara.adapter
+package com.cts.demo.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
-import com.techversant.evara.viewholder.BaseViewHolder
+import com.cts.demo.viewholder.BaseViewHolder
 
 import java.util.*
 import kotlin.collections.ArrayList
 
 
-abstract class BaseRecyclerAdapter<T, V : BaseViewHolder<T, *>>(var data: ArrayList<T>?) : RecyclerView.Adapter<V>() {
+abstract class BaseRecyclerAdapter<T, V : BaseViewHolder<T, *>>(var data: MutableList<T>?) : RecyclerView.Adapter<V>() {
 
 
     protected var TAG : String = javaClass.simpleName

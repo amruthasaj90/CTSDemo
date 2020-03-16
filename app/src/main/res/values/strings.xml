@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">CTSDemo</string>
+<string name="app_name">CTSDemo</string>
+    <string name="title_activity_facts">FactsActivity</string>
+    <string name="no_network">"No Network Available. Please check your network settings</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="server_error">Oops! Something went wrong.</string>
 </resources>

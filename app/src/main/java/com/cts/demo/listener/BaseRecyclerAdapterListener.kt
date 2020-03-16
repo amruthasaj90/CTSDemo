@@ -1,4 +1,4 @@
-package com.techversant.evara.listener
+package com.cts.demo.listener
 
 
 interface BaseRecyclerAdapterListener<T> {

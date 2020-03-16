@@ -10,7 +10,7 @@ plugins {
 android {
     compileSdkVersion(AndroidSdk.compile)
     defaultConfig {
-        applicationId = "com.digicom.onesqft"
+        applicationId = "com.cts.demo"
         minSdkVersion(AndroidSdk.min)
         targetSdkVersion(AndroidSdk.target)
         versionCode = 41
